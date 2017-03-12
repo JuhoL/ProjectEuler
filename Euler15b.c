@@ -18,12 +18,6 @@
 // Structs and enums
 //--------------------------------
 
-typedef struct
-{
-	uint8_t u8_minPosition;
-	uint8_t u8_maxPosition;
-	uint8_t u8_currentPosition;
-} bit_struct;
 
 //--------------------------------
 // Static function prototypes
@@ -56,12 +50,8 @@ int main( int argc, char *argv[] )
 		}
 		else
 		{
-			printf("The grid dimension must be at least 3x3.");
+			printf("The grid dimension must be at least 3x3...");
 		}
-
-#if (DEBUG_ENABLED == TRUE)
-		printf("Debug prints enabled.\r\n");
-#endif
 	}
 	else
 	{
