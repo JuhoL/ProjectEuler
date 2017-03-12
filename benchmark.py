@@ -10,6 +10,7 @@ def secondsToStr(t):
 
 line = "="*40
 def log(s, elapsed=None):
+    print("")
     print(line)
     print(secondsToStr(clock()), '-', s)
     if elapsed:

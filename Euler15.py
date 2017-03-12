@@ -31,6 +31,6 @@ else:
 	# Let's crush this with a healty dose of recursion.
 	gridDimension = int(sys.argv[1])
 	print ("Calculating routes for " + str(gridDimension) + "x" + str(gridDimension) + " grid.")
-	routes = CalculateRoutes(gridDimension + 1, gridDimension - 2)# gridDimension - 2)
+	routes = CalculateRoutes(gridDimension + 1, gridDimension - 2)
 
 	print (str(routes) + " routes found.")
