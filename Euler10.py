@@ -10,5 +10,8 @@ if len(sys.argv) < 2:
 	print ("Give the grid dimension as an argument.")
 else:
 	value = int(sys.argv[1])
-	sumOfPrimes = GetSumOfPrimesBelowValue(value)
+
+	primeList = GeneratePrimeListBelowValueWithSieve(value)
+	sumOfPrimes = sum(primeList)
+	
 	print ("Sum of primes below " + str(value) + " is " + str(sumOfPrimes))

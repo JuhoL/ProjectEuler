@@ -28,17 +28,20 @@ def CheckIfPrime(number, primeList):
 	isPrime = False
 
 	if number > 1:
-		maxLimit = floor(sqrt(number)) + 1
-		i = 0
-		while 1:
-			if primeList[i] == number or primeList[i] > maxLimit: # Any numbers n can have only one prime factor > sqrt(n)
-				isPrime = True
-				break
-			if number % primeList[i] == 0:
-				break
-			i += 1
-			if i >= len(primeList):
-				AppendPrime(primeList)
+		if number < 4:
+			isPrime = True
+		else:
+			maxLimit = floor(sqrt(number)) + 1
+			i = 0
+			while 1:
+				if primeList[i] == number or primeList[i] > maxLimit: # Any numbers n can have only one prime factor > sqrt(n)
+					isPrime = True
+					break
+				if number % primeList[i] == 0:
+					break
+				i += 1
+				if i >= len(primeList):
+					AppendPrime(primeList)
 	return isPrime
 
 def GeneratePrimeList(maxPrimes):
@@ -73,6 +76,27 @@ def GeneratePrimeListBelowValue(maxValue):
 	print ("")
 	print ("Done!")
 	return primeList
+
+def GeneratePrimeListBelowValueWithSieve(maxValue):
+	print ("Generating list of primes below " + str(maxValue))
+	finalPrimeList = []
+	sieve = [True]*maxValue
+
+	if maxValue > 1:
+		primeList = [2]
+		finalPrimeList.append(2)
+		if maxValue > 2:
+			for i in range (3, maxValue, 2):
+				if sieve[i] == True and CheckIfPrime(i, primeList) == True:
+					for k in range (i + i, maxValue, + i):
+						sieve[k] = False
+		
+		for i in range(3, maxValue, 2):
+			if sieve[i] == True:
+				finalPrimeList.append(i)
+	print ("")
+	print ("Done!")
+	return finalPrimeList
 
 def GetSumOfPrimesBelowValue(maxValue, primeList = []):
 	sumOfPrimes = 2
