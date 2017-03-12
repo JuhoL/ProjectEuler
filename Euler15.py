@@ -29,8 +29,15 @@ else:
 	# it is easy to see how foolish I have been. This is a simple series of triangular numbers!
 	# This becomes obvious when you print the bit fields and look for patterns.
 	# Let's crush this with a healty dose of recursion.
+	#
+	# Afterthough: I take my words back! This is actually way slower than the C implementation.
+	# The C version crushed 14x14 grid in a second. This takes 13 seconds. Probably something
+	# to do with my crappy Python skills.
 	gridDimension = int(sys.argv[1])
-	print ("Calculating routes for " + str(gridDimension) + "x" + str(gridDimension) + " grid.")
-	routes = CalculateRoutes(gridDimension + 1, gridDimension - 2)
+	if gridDimension > 2:
+		print ("Calculating routes for " + str(gridDimension) + "x" + str(gridDimension) + " grid.")
+		routes = CalculateRoutes(gridDimension + 1, gridDimension - 2)
 
-	print (str(routes) + " routes found.")
+		print (str(routes) + " routes found.")
+	else:
+		print ("The grid dimension must be at least 3x3...")
