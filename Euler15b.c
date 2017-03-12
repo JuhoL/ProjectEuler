@@ -33,7 +33,7 @@ static uint64_t u64_CalculateRoutes(uint8_t u8_gridDimension, uint8_t u8_recursi
 int main( int argc, char *argv[] )
 {
 	uint8_t u8_gridDimension;
-	uint32_t u32_routes = 0;
+	uint64_t u64_routes = 0;
 
 	if (argc >= 2)
 	{
@@ -60,9 +60,9 @@ int main( int argc, char *argv[] )
 	}
 
 	// Let's try the recursive algorithm that failed in Python in C.
-	u32_routes = u64_CalculateRoutes(u8_gridDimension + 1, u8_gridDimension - 2);
+	u64_routes = u64_CalculateRoutes(u8_gridDimension + 1, u8_gridDimension - 2);
 
-	printf("\r\nRoutes for %ux%u grid is %lu", u8_gridDimension, u8_gridDimension, u32_routes);
+	printf("\r\nRoutes for %ux%u grid is %llu", u8_gridDimension, u8_gridDimension, u64_routes);
 
 	return 0;
 }
