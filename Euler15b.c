@@ -24,7 +24,7 @@
 //--------------------------------
 
 static uint32_t u32_GetTriangular(uint8_t u8_order);
-static uint32_t u32_CalculateRoutes(uint8_t u8_gridDimension, uint8_t u8_recursion);
+static uint64_t u64_CalculateRoutes(uint8_t u8_gridDimension, uint8_t u8_recursion);
 
 //--------------------------------
 // Main
@@ -60,7 +60,7 @@ int main( int argc, char *argv[] )
 	}
 
 	// Let's try the recursive algorithm that failed in Python in C.
-	u32_routes = u32_CalculateRoutes(u8_gridDimension + 1, u8_gridDimension - 2);
+	u32_routes = u64_CalculateRoutes(u8_gridDimension + 1, u8_gridDimension - 2);
 
 	printf("\r\nRoutes for %ux%u grid is %lu", u8_gridDimension, u8_gridDimension, u32_routes);
 
@@ -81,20 +81,20 @@ static uint32_t u32_GetTriangular(uint8_t u8_order)
 	return u32_triangular;
 }
 
-static uint32_t u32_CalculateRoutes(uint8_t u8_gridDimension, uint8_t u8_recursion)
+static uint64_t u64_CalculateRoutes(uint8_t u8_gridDimension, uint8_t u8_recursion)
 {
-	uint32_t u32_totalRoutes = 0;
+	uint64_t u64_totalRoutes = 0;
 	uint8_t u8_cycleStart = u8_gridDimension;
 	for (uint8_t i = u8_cycleStart; i > 0; i--)
 	{
 		if (u8_recursion > 1)
 		{
-			u32_totalRoutes += u32_CalculateRoutes(i, u8_recursion - 1);
+			u64_totalRoutes += u64_CalculateRoutes(i, u8_recursion - 1);
 		}
 		else
 		{
-			u32_totalRoutes += u32_GetTriangular(i);
+			u64_totalRoutes += u32_GetTriangular(i);
 		}
 	}
-	return u32_totalRoutes;
+	return u64_totalRoutes;
 }
