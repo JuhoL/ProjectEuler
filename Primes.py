@@ -1,119 +1,6 @@
 # Functions for handling primes.
 
-def GeneratePrimeList(maxPrimes):
-	print ("Generating prime list...")
-	primeList = [2]
-	k = 1
-
-	for i in range(1, maxPrimes): # Loop until enough primes is found...
-		primeFound = False
-		while primeFound == False:
-			primeFound = True
-			k += 2
-			for n in range(0,i): # Check if the next k is a prime
-				if (k % primeList[n] == 0):
-					primeFound = False
-					break
-		print (str(i) + " found\r", end=''),
-		primeList.append(k)
-	print ("")
-	print ("Done!")
-	return primeList
-
-def GeneratePrimeListBelowValue(maxValue):
-	print ("Generating prime list...")
-	primeList = [2]
-	primesInList = 1
-
-	for i in range(3, maxValue, 2): # Loop until enough primes is found...
-		primeFound = True
-		
-		for n in range(0, primesInList): # Check if the i is a prime
-			if (i % primeList[n] == 0):
-				primeFound = False
-
-		if primeFound == True:
-			primesInList += 1
-			print (str(primesInList) + " found\r", end=''),
-			primeList.append(i)
-
-	print ("")
-	print ("Done!")
-	return primeList
-
-def GetSumOfPrimesBelowValue(maxValue):
-	print ("Generating prime list...")
-	primeList = [2]
-	primesInList = 1
-	sumOfPrimes = 2
-
-	for i in range(3, maxValue, 2): # Loop until enough primes is found...
-		primeFound = True
-		
-		for n in range(0, primesInList): # Check if the i is a prime
-			if (i % primeList[n] == 0):
-				primeFound = False
-
-		if primeFound == True:
-			primesInList += 1
-			percentage = ((i*1000)//maxValue)/10
-			print (str(percentage) + "% complete\r", end=''),
-			primeList.append(i)
-			sumOfPrimes += i
-
-	print ("")
-	print ("Done!")
-	return sumOfPrimes
-
-def CheckIfPrime(number, primeList):
-	isPrime = False
-	if number == 1:
-		isPrime = True
-	else:
-		size = len(primeList)
-		for i in range(0,size):
-			if primeList[i] == number:
-				isPrime = True
-				break
-	return isPrime
-
-def GetLargestFactor(number, primeListSize):
-	primeList = GeneratePrimeList(primeListSize)
-	largestFactor = 0
-
-	print ("Factors of " + str(number) + ":")
-	while CheckIfPrime(number, primeList) == False:
-		tooSmallPrimes = True
-		for i in range(0, primeListSize):
-			if number % primeList[i] == 0:
-				number = number / primeList[i]
-				largestFactor = primeList[i]
-				print (str(largestFactor))
-				tooSmallPrimes = False
-		if tooSmallPrimes == True:
-			print ("Primelist is too small! Remainder: " + str(number))
-			break
-	return largestFactor
-
-def GetPrime(position):
-	prime = 0
-	k = 2
-
-	if position != 1:
-		k = 1
-
-		for i in range(1, position): # Loop until enough primes is found...
-			primeFound = False
-			while primeFound == False:
-				primeFound = True
-				k += 2
-				for n in range(2,k): # Check if the next k is a prime
-					if (k % n == 0):
-						primeFound = False
-						break
-	
-	prime = k
-	return prime
+from math import *
 
 def AppendPrime(primeList):
 	primesInList = len(primeList)
@@ -126,39 +13,127 @@ def AppendPrime(primeList):
 	while primeFound == False: # Loop until enough primes is found...
 		primeFound = True
 		i += 2
+		maxLimit = floor(sqrt(i)) + 1
 
 		for n in range(0, primesInList): # Check if the i is a prime
 			if (i % primeList[n] == 0):
 				primeFound = False
+			if (primeList[n] > maxLimit):
+				break;
 			
 	primeList.append(i)
 	return primeList
 
-def GetLargestFactorDynamic(number):
+def CheckIfPrime(number, primeList):
+	isPrime = False
+
+	if number > 1:
+		maxLimit = floor(sqrt(number)) + 1
+		i = 0
+		while 1:
+			if primeList[i] == number or primeList[i] > maxLimit: # Any numbers n can have only one prime factor > sqrt(n)
+				isPrime = True
+				break
+			if number % primeList[i] == 0:
+				break
+			i += 1
+			if i >= len(primeList):
+				AppendPrime(primeList)
+	return isPrime
+
+def GeneratePrimeList(maxPrimes):
+	print ("Generating prime list...")
 	primeList = [2]
-	largestFactor = 0
+	k = 1
+
+	for i in range(1, maxPrimes): # Loop until enough primes is found...
+		primeFound = False
+		while primeFound == False:
+			k += 2
+			primeFound = CheckIfPrime(k, primeList)
+		print (str(i) + " found\r", end=''),
+		primeList.append(k)
+	print ("")
+	print ("Done!")
+	return primeList
+
+def GeneratePrimeListBelowValue(maxValue):
+	print ("Generating prime list...")
+	primeList = [2]
+	primesInList = 1
+
+	for i in range(3, maxValue, 2): # Loop until enough primes is found...
+		primeFound = CheckIfPrime(i, primeList)
+
+		if primeFound == True:
+			primesInList += 1
+			print (str(primesInList) + " found\r", end=''),
+			primeList.append(i)
+
+	print ("")
+	print ("Done!")
+	return primeList
+
+def GetSumOfPrimesBelowValue(maxValue, primeList = []):
+	sumOfPrimes = 2
+
+	if len(primeList) > 0:
+		i = 2
+		while True:
+			prime = GetPrime(i, primeList)
+			if prime > maxValue:
+				break
+			sumOfPrimes += prime
+			i += 1
+	else:
+		print ("Prime search without list.")
+		i = 1
+		primeList = [2]
+		while True:
+			primeFound = False
+			while primeFound == False: # Loop until enough primes is found...
+				primeFound = True
+				i += 2
+				maxLimit = floor(sqrt(i)) + 1
+
+				for n in range(0, len(primeList)): # Check if the i is a prime
+					if (i % primeList[n] == 0):
+						primeFound = False
+					if (primeList[n] > maxLimit):
+						break;
+			if i < maxValue:
+				sumOfPrimes += i
+				primeList.append(i)
+			else:
+				break
+	
+	return sumOfPrimes
+
+def GetLargestFactor(number, primeList):
+	largestFactor = 1
 
 	print ("Factors of " + str(number) + ":")
-	while CheckIfPrime(number, primeList) == False:
-		tooSmallPrimes = True
+	while number > 1 and CheckIfPrime(number, primeList) == False:
 		i = 0
-		while tooSmallPrimes == True:
-			if i == len(primeList):
-				AppendPrime(primeList)
-
-			if number % primeList[i] == 0:
+		while i < len(primeList) and number > 1:
+			while number % primeList[i] == 0:
 				number = number / primeList[i]
 				largestFactor = primeList[i]
-				print (str(largestFactor))
-				tooSmallPrimes = False
-
+				print (str(largestFactor) + " remainder: " + str(number))
 			i += 1
+			if i == len(primeList):
+				AppendPrime(primeList)
 	return largestFactor
+
+def GetPrime(position, primeList = [2]):
+	while position > len(primeList):
+		AppendPrime(primeList)
+	return primeList[len(primeList) - 1]
 
 def GetNumberOfFactors(number, primeList, maxFactorOrder = 0):
 	factors = 0
 
-	while CheckIfPrime(number, primeList) == False:
+	while number > 1 and CheckIfPrime(number, primeList) == False:
 		factorFound = False
 		i = 0
 		while factorFound == Flase and (i < maxFactorOrder or maxFactorOrder == 0):

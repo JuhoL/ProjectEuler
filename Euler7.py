@@ -4,25 +4,6 @@
 # What is the 10 001st prime number?
 
 import benchmark
-
-def GetPrime(position):
-	print ("Finding prime...")
-	prime = 0
-	k = 2
-	primeList = [2]
-
-	for i in range(1, position): # Loop until enough primes is found...
-		primeFound = False
-		while primeFound == False:
-			primeFound = True
-			k += 1
-			for n in range(0,i): # Check if the next k is a prime
-				if (k % primeList[n] == 0):
-					primeFound = False
-					break
-		print (str(i) + " found\r", end=''),
-		primeList.append(k)
-	prime = k
-	return prime
+from Primes import *
 
 print ("The 10001th prime is " + str(GetPrime(10001)))
