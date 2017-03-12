@@ -33,6 +33,7 @@ else:
 	# Afterthough: I take my words back! This is actually way slower than the C implementation.
 	# The C version crushed 14x14 grid in a second. This takes 13 seconds. Probably something
 	# to do with my crappy Python skills.
+
 	gridDimension = int(sys.argv[1])
 	if gridDimension > 2:
 		print ("Calculating routes for " + str(gridDimension) + "x" + str(gridDimension) + " grid.")
