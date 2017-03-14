@@ -4,6 +4,10 @@ def GetFactorial(order):
 	factorial = order
 	for i in range(2, order):
 		factorial *= i
+
+	# !0 = 1 according to the convention for an empty product.
+	if factorial == 0:
+		factorial = 1
 	return factorial
 
 def GetTriangular(order):
@@ -36,3 +40,23 @@ def GetDivisors(number):
 def GetSumOfDivisors(number):
 	divisorList = GetDivisors(number)
 	return sum(divisorList)
+
+def IsPalindrome(number):
+	palindromeFound = True
+	numberString = str(number)
+	length = len(numberString)
+	for i in range (0, length//2):
+		if numberString[i] != numberString[length - i - 1]:
+			palindromeFound = False
+			break
+	return palindromeFound
+
+def IsBinaryPalindrome(number):
+	palindromeFound = True
+	numberString = bin(number)[2::1]
+	length = len(numberString)
+	for i in range (0, length//2):
+		if numberString[i] != numberString[length - i - 1]:
+			palindromeFound = False
+			break
+	return palindromeFound

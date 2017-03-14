@@ -61,7 +61,7 @@ def GeneratePrimeList(maxPrimes):
 	return primeList
 
 def GeneratePrimeListBelowValue(maxValue):
-	print ("Generating prime list...")
+	print ("Generating list of primes below " + str(maxValue))
 	primeList = [2]
 	primesInList = 1
 
@@ -70,10 +70,8 @@ def GeneratePrimeListBelowValue(maxValue):
 
 		if primeFound == True:
 			primesInList += 1
-			print (str(primesInList) + " found\r", end=''),
 			primeList.append(i)
 
-	print ("")
 	print ("Done!")
 	return primeList
 
@@ -94,7 +92,6 @@ def GeneratePrimeListBelowValueWithSieve(maxValue):
 		for i in range(3, maxValue, 2):
 			if sieve[i] == True:
 				finalPrimeList.append(i)
-	print ("")
 	print ("Done!")
 	return finalPrimeList
 

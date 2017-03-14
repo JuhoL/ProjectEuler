@@ -4,16 +4,7 @@
 # Find the largest palindrome made from the product of two 3-digit numbers.
 
 import benchmark
-
-def IsPalindrome(number):
-	palindromeFound = True
-	numberString = str(number)
-	length = len(numberString)
-	for i in range (0, length//2):
-		if numberString[i] != numberString[length - i - 1]:
-			palindromeFound = False
-			break
-	return palindromeFound
+from Utils import IsPalindrome
 
 largest = 0
 largesta = 0
