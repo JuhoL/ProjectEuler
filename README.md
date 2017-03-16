@@ -6,7 +6,7 @@ If you are not familiar with Project Euler, take a look at their website first a
 If the problems seem interesting, ignore this repo and go solve the problems yourself - It will be an enlightening experience.
 
 If you are currently working on Project Euler problems and for some strange reason you want to cheat by copy-pasting my solutions,
-I'd like to remind that if you are going to do art forgery it is wiser to make a frogery of Rembrandt that a drawing of
+I'd like to remind that if you are going to do art forgery it is wiser to make a forgery of Rembrandt than a drawing by
 a nine-year-old Johnny. My repo is the latter, since I'm not a mathematician.
 
 So, in a nut-shell:
