@@ -1,5 +1,7 @@
 # Project Euler various utility functions
 
+from math import floor, sqrt
+
 #-------------------------------------------------------------------------
 # Factorials
 #-------------------------------------------------------------------------
@@ -234,9 +236,37 @@ def GetCombinatoricSelection(n, r):
 # Convergence
 #-------------------------------------------------------------------------
 
-def NextConvergent(pq):
-	p = pq[0]
-	q = pq[1]
-	pq[0] = (p+2*q)
-	pq[1] = (p+q)
-	return
+def GetSqrtConvergents(S, n):
+	m = 0
+	d = 1
+	a = floor(sqrt(S))
+	a0 = a
+	convergents = [a]
+	n -= 1
+
+	while n > 0:
+		m = d*a - m
+		d = (S-m**2)/d
+		a = floor((a0+m)/d)
+		convergents.append(a)
+		n -= 1
+
+	return convergents
+
+def GetFractionsFromCovnergents(convergents):
+	fractions = []
+	p0 = 0
+	p1 = 1
+	q0 = 1
+	q1 = 0
+
+	for a in convergents:
+		p = a*p1 + p0
+		q = a*q1 + q0
+		fractions.append([p,q])
+		p0 = p1
+		p1 = p
+		q0 = q1
+		q1 = q
+
+	return fractions
