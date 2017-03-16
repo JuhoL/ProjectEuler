@@ -11,6 +11,6 @@ a nine-year-old Johnny. My repo is the latter, since I'm not a mathematician.
 
 So, in a nut-shell:
 1. If you are interested in Project Euler and are perhaps already workingo n the problems, GO AWAY! You'll ruin the fun.
-2. Iy tou are interested in Project Euler and want to copy-paste solutions like a lousy dog that you are, GO AWAY! There are much better solutions available.
+2. If you are interested in Project Euler and want to copy-paste solutions like a lousy dog that you are, GO AWAY! There are much better solutions available.
 3. If you cannot be arsed less about Project Euler, GO AWAY! I don't know what you are doing in here in the first place.
 4. If you have already solved the problems and want to take a look at how others have solved the problems, then feel free to rummage around.
