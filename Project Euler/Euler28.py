@@ -14,6 +14,8 @@
 # What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral
 # formed in the same way?
 
+import sys
+sys.path.insert(0, './Utils')
 import benchmark
 
 dimensionMax = 1001

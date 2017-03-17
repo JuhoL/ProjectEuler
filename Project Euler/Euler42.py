@@ -13,6 +13,8 @@
 # Using words.txt (right click and 'Save Link/Target As...'), a 16K text file containing
 # nearly two-thousand common English words, how many are triangle words?
 
+import sys
+sys.path.insert(0, './Utils')
 import benchmark
 from Utils import GetSumOfLetters, GetTriangular
 

@@ -5,6 +5,8 @@
 # 
 # What is the largest n-digit pandigital prime that exists?
 
+import sys
+sys.path.insert(0, './Utils')
 import benchmark
 from Primes import *
 from Utils import IsPandigital

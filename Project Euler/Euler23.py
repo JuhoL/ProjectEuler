@@ -15,8 +15,9 @@
 # 
 # Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
 
-import benchmark
 import sys
+sys.path.insert(0, './Utils')
+import benchmark
 from Utils import *
 
 def IsAbundant(number):

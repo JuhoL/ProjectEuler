@@ -14,6 +14,8 @@
 # 
 # NOTE: Once the chain starts the terms are allowed to go above one million.
 
+import sys
+sys.path.insert(0, './Utils')
 import benchmark
 
 longestChain = 0

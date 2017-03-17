@@ -6,6 +6,8 @@
 # ...
 # 53503534226472524250874054075591789781264330331690
 
+import sys
+sys.path.insert(0, './Utils')
 import benchmark
 
 # Lets sum only the 10 first digits + 1 for "rounding"...

@@ -28,6 +28,8 @@
 # NOTE: Wording was modified slightly on 24 April 2007 to emphasise the theoretical nature of
 # Lychrel numbers.
 
+import sys
+sys.path.insert(0, './Utils')
 import benchmark
 from Utils import GetPalindrome, IsPalindrome
 

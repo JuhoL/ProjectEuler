@@ -1,4 +1,4 @@
-# Project Euler Problem 18: "Maximum path sum II"
+# Project Euler Problem 67: "Maximum path sum II"
 # 
 # By starting at the top of the triangle below and moving to adjacent numbers on the row below,
 # the maximum total from top to bottom is 23.
@@ -18,8 +18,9 @@
 # second it would take over twenty billion years to check them all. There is an efficient algorithm
 # to solve it. 
 
-import benchmark
 import sys
+sys.path.insert(0, './Utils')
+import benchmark
 from copy import deepcopy
 
 def ReadTriangleFromFile(fileName, triangle):

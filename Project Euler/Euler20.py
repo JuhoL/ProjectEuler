@@ -7,8 +7,9 @@
 # 
 # Find the sum of the digits in the number 100!
 
-import benchmark
 import sys
+sys.path.insert(0, './Utils')
+import benchmark
 from Utils import *
 
 if len(sys.argv) < 2:

@@ -17,6 +17,8 @@
 # 
 # In the first one-thousand expansions, how many fractions contain a numerator with more digits than denominator?
 
+import sys
+sys.path.insert(0, './Utils')
 import benchmark
 from Utils import GetSqrtConvergents, GetFractionsFromCovnergents
 

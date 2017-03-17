@@ -3,8 +3,9 @@
 # The series, 1^1 + 2^2 + 3^3 + ... + 10^10 = 10405071317.
 # Find the last ten digits of the series, 11 + 22 + 33 + ... + 1000^1000.
 
-import benchmark
 import sys
+sys.path.insert(0, './Utils')
+import benchmark
 
 # Expected memory overflow, but what do you know. Well done Python, well done...
 sumOfSelfPowers = 0

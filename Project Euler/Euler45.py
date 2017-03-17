@@ -9,6 +9,8 @@
 # 
 # Find the next triangle number that is also pentagonal and hexagonal.
 
+import sys
+sys.path.insert(0, './Utils')
 import benchmark
 from Utils import *
 

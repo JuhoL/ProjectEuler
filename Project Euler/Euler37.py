@@ -8,6 +8,8 @@
 # 
 # NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 
+import sys
+sys.path.insert(0, './Utils')
 import benchmark
 from Primes import *
 

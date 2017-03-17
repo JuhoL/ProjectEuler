@@ -7,8 +7,9 @@
 # 
 # (Please note that the palindromic number, in either base, may not include leading zeros.)
 
-import benchmark
 import sys
+sys.path.insert(0, './Utils')
+import benchmark
 from Utils import *
 
 if len(sys.argv) < 2:

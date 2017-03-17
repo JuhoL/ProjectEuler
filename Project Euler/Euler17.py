@@ -9,8 +9,9 @@
 # contains 23 letters and 115 (one hundred and fifteen) contains 20 letters.
 # The use of "and" when writing out numbers is in compliance with British usage.
 
-import benchmark
 import sys
+sys.path.insert(0, './Utils')
+import benchmark
 
 ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]

@@ -8,8 +8,9 @@
 # 
 # How many circular primes are there below one million?
 
-import benchmark
 import sys
+sys.path.insert(0, './Utils')
+import benchmark
 from Primes import *
 
 if len(sys.argv) < 2:

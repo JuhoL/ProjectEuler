@@ -32,8 +32,9 @@
 # However, Problem 67, is the same challenge with a triangle containing one-hundred rows;
 # it cannot be solved by brute force, and requires a clever method!
 
-import benchmark
 import sys
+sys.path.insert(0, './Utils')
+import benchmark
 from copy import deepcopy
 
 triangle = []

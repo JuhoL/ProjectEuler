@@ -17,6 +17,8 @@
 # 
 # What is the value of the first triangle number to have over five hundred divisors?
 
+import sys
+sys.path.insert(0, './Utils')
 import benchmark
 import Primes
 

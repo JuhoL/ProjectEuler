@@ -8,8 +8,9 @@
 # 
 # Evaluate the sum of all the amicable numbers under 10000.
 
-import benchmark
 import sys
+sys.path.insert(0, './Utils')
+import benchmark
 from Utils import *
 
 if len(sys.argv) < 2:

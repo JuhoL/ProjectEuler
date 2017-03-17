@@ -19,8 +19,9 @@
 # Find the product of the coefficients, a and b, for the quadratic expression that produces the maximum
 # number of primes for consecutive values of n, starting with n=0.
 
-import benchmark
 import sys
+sys.path.insert(0, './Utils')
+import benchmark
 from Primes import *
 
 def CheckConsecutivePrimes(a, b, primeList):

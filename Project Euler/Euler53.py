@@ -13,6 +13,8 @@
 # 
 # How many, not necessarily distinct, values of  nCr, for 1 ≤ n ≤ 100, are greater than one-million?
 
+import sys
+sys.path.insert(0, './Utils')
 import benchmark
 from Utils import GetCombinatoricSelection
 

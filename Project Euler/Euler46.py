@@ -15,6 +15,8 @@
 # What is the smallest odd composite that cannot be written as the sum of a prime and
 # twice a square?
 
+import sys
+sys.path.insert(0, './Utils')
 import benchmark
 from Primes import *
 

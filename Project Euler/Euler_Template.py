@@ -2,8 +2,9 @@
 # 
 # Description
 
-import benchmark
 import sys
+sys.path.insert(0, './Utils')
+import benchmark
 
 if len(sys.argv) < 2:
 	print ("Give ... as an argument.")

@@ -9,8 +9,9 @@
 # 
 # What is the total of all the name scores in the file?
 
-import benchmark
 import sys
+sys.path.insert(0, './Utils')
+import benchmark
 
 def GetNameScore(name, position):
 	score = 0

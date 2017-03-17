@@ -7,6 +7,8 @@
 # 
 # Note: as 1! = 1 and 2! = 2 are not sums they are not included.
 
+import sys
+sys.path.insert(0, './Utils')
 import benchmark
 from Utils import GetFactorial
 

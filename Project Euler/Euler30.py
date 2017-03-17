@@ -13,6 +13,8 @@
 # Find the sum of all the numbers that can be written as the sum of fifth powers
 # of their digits.
 
+import sys
+sys.path.insert(0, './Utils')
 import benchmark
 
 power = 5
