@@ -233,40 +233,11 @@ def GetCombinatoricSelection(n, r):
 	return selection
 
 #-------------------------------------------------------------------------
-# Convergence
+# Squares
 #-------------------------------------------------------------------------
 
-def GetSqrtConvergents(S, n):
-	m = 0
-	d = 1
-	a = floor(sqrt(S))
-	a0 = a
-	convergents = [a]
-	n -= 1
-
-	while n > 0:
-		m = d*a - m
-		d = (S-m**2)/d
-		a = floor((a0+m)/d)
-		convergents.append(a)
-		n -= 1
-
-	return convergents
-
-def GetFractionsFromCovnergents(convergents):
-	fractions = []
-	p0 = 0
-	p1 = 1
-	q0 = 1
-	q1 = 0
-
-	for a in convergents:
-		p = a*p1 + p0
-		q = a*q1 + q0
-		fractions.append([p,q])
-		p0 = p1
-		p1 = p
-		q0 = q1
-		q1 = q
-
-	return fractions
+def IsSquare(n):
+	isSquare = False
+	if sqrt(n) % 1 == 0:
+		isSquare = True
+	return isSquare
