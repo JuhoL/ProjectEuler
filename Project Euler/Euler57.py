@@ -20,10 +20,10 @@
 import sys
 sys.path.insert(0, './Utils')
 import benchmark
-from Utils import GetSqrtConvergents, GetFractionsFromCovnergents
+from Convergents import GetSqrtConvergents, GetFractionsFromConvergents
 
 convergents = GetSqrtConvergents(2, 1000)
-fractions = GetFractionsFromCovnergents(convergents)
+fractions = GetFractionsFromConvergents(convergents)
 
 exceeds = 0
 for pq in fractions:

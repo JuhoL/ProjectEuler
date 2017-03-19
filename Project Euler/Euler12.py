@@ -42,7 +42,7 @@ while mostDivisors < 500:
 	if triangularSum > minimumLimit:
 		# All highly composite numbers have lots of consecutive small factors.
 		# We shall use this knowledge to eliminate lost causes.
-		if Primes.GetNumberOfConsecutiveFactors(triangularSum, primeList, primeOrderLimit) == True:
+		if Primes.GetNumberOfConsecutiveFactors(triangularSum, primeOrderLimit, primeList) == True:
 			divisors = GetNumberOfDivisors(triangularSum)
 			if divisors > mostDivisors:
 				mostDivisors = divisors
