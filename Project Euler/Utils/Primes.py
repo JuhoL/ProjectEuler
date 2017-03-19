@@ -320,3 +320,18 @@ def AreCoprimes(n1, n2, primelist = internalPrimelist):
 			areCoprimes = False
 			break
 	return areCoprimes
+
+def GetDistinctFactors(number, primeList = internalPrimelist):
+	factors = []
+
+	while number > 1 and CheckIfPrime(number, primeList) == False:
+		i = 0
+		while i < len(primeList) and number > 1:
+			while number % primeList[i] == 0:
+				number = number / primeList[i]
+				if (primeList[i] in factors) == False:
+					factors.append(primeList[i])
+			i += 1
+			if i == len(primeList):
+				AppendPrime(primeList)
+	return factors
