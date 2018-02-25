@@ -261,6 +261,26 @@ def DigitPermutationToInteger(permutation):
 		integer += permutation[i] * 10**(digits - i - 1)
 	return integer
 
+def GetPermutations(number):
+    permutations = [number]
+    finalPermutation = False
+    numberString = ''.join(sorted(str(number)))
+    numberArray = map(int, numberString)
+
+    while (int(numberString) < number) and (finalPermutation == False):
+        finalPermutation = GetNextPandigitalPermutation(numberArray)
+        numberString = ''.join(map(str, numberArray));
+
+    while finalPermutation == False:
+        numberArray = map(int, numberString)
+        finalPermutation = GetNextPandigitalPermutation(numberArray)
+        numberString = ''.join(map(str, numberArray));
+        if finalPermutation == False:
+            permutations.append(int(numberString))
+    
+    return permutations
+
+
 #-------------------------------------------------------------------------
 # Sum of letters
 #-------------------------------------------------------------------------

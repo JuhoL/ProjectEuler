@@ -15,4 +15,41 @@ sys.path.insert(0, './Utils')
 import benchmark
 from Primes import *
 
-primeList = 
+primeValueLimit = 1000000
+primeValueMinimum = primeValueLimit - primeValueLimit/10
+
+primeList = GeneratePrimeListBelowValue(primeValueLimit)
+primeSums = []
+primeCounts = []
+maximumCount = 0
+
+for i in range(0, len(primeList)):
+    if primeList[i] > primeValueMinimum:
+        windowedPrimes = primeList[i:]
+        windowLimit = i
+        if windowLimit > 1000:
+            windowLimit = 1000
+        break
+
+print ("There are " + str(len(primeList)) + " primes.")
+
+for i in range(0, windowLimit):
+    primeSum = 0
+    count = 0
+    for k in range(i, windowLimit):
+        primeSum += primeList[k]
+        count += 1
+        if primeSum > primeValueLimit:
+            break
+        if primeSum > primeValueMinimum and count > maximumCount:
+            if primeSum in windowedPrimes:
+                maximumCount = count
+                primeSums.append(primeSum)
+                primeCounts.append(count)
+
+print ("Search complete.")
+
+maximumIndex = primeCounts.index(maximumCount)
+maximumPrime = primeSums[maximumIndex]
+
+print ("Biggest prime is " + str(maximumPrime) + " with " + str(maximumCount) + " consecutive primes.")
