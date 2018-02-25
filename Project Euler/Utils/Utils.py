@@ -264,12 +264,8 @@ def DigitPermutationToInteger(permutation):
 def GetPermutations(number):
     permutations = [number]
     finalPermutation = False
-    numberString = ''.join(sorted(str(number)))
+    numberString = str(number)
     numberArray = map(int, numberString)
-
-    while (int(numberString) < number) and (finalPermutation == False):
-        finalPermutation = GetNextPandigitalPermutation(numberArray)
-        numberString = ''.join(map(str, numberArray));
 
     while finalPermutation == False:
         numberArray = map(int, numberString)
