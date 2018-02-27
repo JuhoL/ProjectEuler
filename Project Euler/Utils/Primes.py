@@ -178,59 +178,9 @@ def GeneratePrimeListInWindow(minValue, maxValue):
 def GeneratePrimeListBelowValue(maxValue):
     return GeneratePrimeListInWindow(2, maxValue)
 
-def GeneratePrimeListBelowValueWithSieve(maxValue):
-    print ("Generating list of primes below " + str(maxValue))
-    finalPrimeList = []
-    sieve = [True]*maxValue
-
-    if maxValue > 1:
-        primeList = [2]
-        finalPrimeList.append(2)
-        if maxValue > 2:
-            for i in range (3, maxValue, 2):
-                if sieve[i] == True and CheckIfPrime(i, primeList) == True:
-                    for k in range (i + i, maxValue, + i):
-                        sieve[k] = False
-        
-        for i in range(3, maxValue, 2):
-            if sieve[i] == True:
-                finalPrimeList.append(i)
-    print ("Done!")
-    return finalPrimeList
-
 def GetSumOfPrimesBelowValue(maxValue, primeList = internalPrimelist):
-    sumOfPrimes = 2
-
-    if len(primeList) > 0:
-        i = 2
-        while True:
-            prime = GetPrime(i, primeList)
-            if prime > maxValue:
-                break
-            sumOfPrimes += prime
-            i += 1
-    else:
-        print ("Prime search without list.")
-        i = 1
-        primeList = [2]
-        while True:
-            primeFound = False
-            while primeFound == False: # Loop until enough primes is found...
-                primeFound = True
-                i += 2
-                maxLimit = floor(sqrt(i)) + 1
-
-                for n in range(0, len(primeList)): # Check if the i is a prime
-                    if (i % primeList[n] == 0):
-                        primeFound = False
-                    if (primeList[n] > maxLimit):
-                        break;
-            if i < maxValue:
-                sumOfPrimes += i
-                primeList.append(i)
-            else:
-                break
-    
+    primeList = GeneratePrimeListBelowValue(maxValue)
+    sumOfPrimes = sum(primeList)
     return sumOfPrimes
 
 def GetLargestPrimeIndex(maxValue, primeList = internalPrimelist):
@@ -255,7 +205,7 @@ def GetPrime(position, primeList = internalPrimelist):
 def GetFactors(number, primeList = internalPrimelist):
     factors = []
 
-    while number > 1 and CheckIfPrime(number, primeList) == False:
+    while number > 1 and CheckIfComposite(number) == True:
         i = 0
         while i < len(primeList) and number > 1:
             while number % primeList[i] == 0:

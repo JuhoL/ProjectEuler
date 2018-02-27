@@ -1,6 +1,7 @@
 # Project Euler various utility functions
 
 from math import floor, sqrt
+from functools import reduce
 
 #-------------------------------------------------------------------------
 # Factorials
@@ -107,6 +108,20 @@ def CheckIfHexagonal(number):
     return isHexagonal
 
 #-------------------------------------------------------------------------
+# Heptagonals
+#-------------------------------------------------------------------------
+
+def CalculateHeptagonal(order):
+    return (order*(5*order-3))//2
+
+#-------------------------------------------------------------------------
+# Octagonals
+#-------------------------------------------------------------------------
+
+def CalculateOctagonal(order):
+    return (order*(3*order-2))
+
+#-------------------------------------------------------------------------
 # Fibonacci
 #-------------------------------------------------------------------------
 
@@ -142,7 +157,14 @@ def GetNumberOfDivisors(number):
 
 def GetDivisors(number):
     divisorList = [1]
-    for i in range (2, number):
+
+    if number % 2 == 0:
+        upperLimit = number / 2
+        divisorList.append(2)
+    else:
+        upperLimit = number / 3
+
+    for i in range (3, upperLimit + 1):
         if number%i == 0:
             divisorList.append(i)
     return divisorList
@@ -276,6 +298,18 @@ def GetPermutations(number):
     
     return permutations
 
+def GetFinalPermutation(number):
+    return int(reduce(lambda x,y: y+x, sorted(str(number))))
+
+def ArePermutations(a, b):
+    stringA = str(a)
+    stringB = str(b)
+    arePermutations = True
+    for c in stringA:
+        if stringA.count(c) != stringB.count(c):
+            arePermutations = False
+            break
+    return arePermutations
 
 #-------------------------------------------------------------------------
 # Sum of letters
